@@ -1,0 +1,14 @@
+{
+  "name": "easy_mongodb",
+  "version": "1.0.0",
+  "description": "a easy way to use mongo db",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^4.2.0"
+  }
+}
