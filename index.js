@@ -1,49 +1,35 @@
-require('dotenv').config()
-class easyMongoDB{
-    database;
-    ConnectionSrv
+// exports.Inserts = require("./lib/Inserts.js");
+// exports.DatabaseCore = require("./lib/DatabaseCore");
 
-    constructor(database,ConnectionSrv){
-        this.database = database;
-        this.ConnectionSrv = ConnectionSrv;
+const Inserts = require("./lib/Inserts");
+const Update = require("./lib/Update")
+
+class DatabaseCore{
+    constructor(){
+        console.log("database core loaded");
+
+        this.Inserts = new Inserts()
+
+        this.Update = new Update()
     }
-    dump(){
-        console.log(this.database)
-        console.log(this.ConnectionSrv)
+    function kaas() {
+        const MongoClient = require("mongodb").MongoClient;
+// Connection URI
+require("dotenv").config({
+  path: "../.env",
+});
+const uri = process.env.DB_URL;
+const client = new MongoClient(uri, {
+  useUnifiedTopology: true,
+});
+
+const connection = client.connect();
+const connect = connection;
+
+const dbo = client.db("discord");
+
     }
-
-    get test(){
-        return 0
-    }
-}
-const MongoDB = new easyMongoDB('test',process.env.srv )
-
-MongoDB.dump()
-module.exports = easyMongoDB;
-
-// class A{
-//     constructor(){
-//         console.log('dit is de constructor van klas a')
-
-//     }
-
-//     test(){
-//         console.log('aks')
-//     }
-// }
-
-// class B extends A{
-//     constructor(){
-//         super()
-//         console.log('dit is de constructor van klas b')
-
-//     }
     
-// }
+}
 
-// const b = new B()
-
-
-
-
-
+module.exports = DatabaseCore
