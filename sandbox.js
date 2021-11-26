@@ -1,6 +1,10 @@
-const easyMongoDB = require("./index.js")
+require("dotenv").config({
+    path: ".env",
+});
 
-const DB = new easyMongoDB("database","url")
+const DatabaseCore = require("./index.js")
+
+const DB = new DatabaseCore("test",process.env.db_url)
 
 DB.Inserts.one()
-DB.Update.one()
+// DB.Update.one()
